@@ -1,4 +1,4 @@
-import {authAxios} from './http-common';
+import { authAxios } from './http-common';
 
 //Topics
 const getTopics = (data) => {

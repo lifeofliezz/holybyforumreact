@@ -1,6 +1,5 @@
-import SearchTopicList from '../components/search/SearchTopicList';
-import {connect} from 'react-redux';
-//todo: make searchfunction
+import SearchTopicList from './../components/search/SearchTopicList';
+import { connect } from 'react-redux';
 const mapStateToProps = state =>({
   data:state.term
 });

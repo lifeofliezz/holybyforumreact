@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import ReactionEditor from './ReactionEditor';
 import TopicContext from './../../context/TopicContext';
-import { MyContext } from '../../context/MyContext';
+import { MyContext } from './../../context/MyContext';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 const textEllipsisStyle = {
   overflow: 'hidden',
@@ -31,32 +32,47 @@ const ReactionRenderer = (props) => {
   }
 
   return (
-    <div style={{borderRadius: 8, display:'flex', padding:8, textAlign:'left', backgroundColor:'lightgray', marginTop:8}}>
-
-    <span style={{...textEllipsisStyle, fontSize: 14}}>{props.username}</span>
-
-    {
-      edit? (
-        <ReactionEditor reactionid={props.reactionid} content={props.content} onSave={onSave}/>
-      ) : (
-        <span style={{...textEllipsisStyle, fontSize: 12}}>{props.content}</span>
-      )
-    }
-
-    {
-      isEditable? (
-        <>
-          <button onClick={toggleEdit} >
-            Wijzig reactie
-          </button>
-          <button onClick={deleteReaction} >
-            Verwijder reactie
-          </button>
-        </>
-      ) : null
-    }
+    <div>
+      <Card>
+        <Card.Body>
+          <Card.Subtitle>
+            {props.username}
+          </Card.Subtitle>
+          <Card.Text>
+            {
+              edit ? (
+                <ReactionEditor reactionid={props.reactionid} content={props.content} onSave={onSave}/>
+              ) : (
+                <span>
+                  {props.content}
+                </span>
+              )
+            }
+          </Card.Text>
+          {
+            isEditable ? (
+              <div>
+                <Container>
+                  <Row>
+                    <Col xs={6} sm={2}>
+                      <Button variant='secondary' onClick={toggleEdit}>
+                        Wijzig reactie
+                      </Button>
+                    </Col>
+                    <Col xs={6} sm={2}>
+                      <Button  variant='danger' onClick={deleteReaction}>
+                        Verwijder reactie
+                      </Button>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            ) : null
+          }
+        </Card.Body>
+      </Card>
     </div>
-  )
+  );
 }
 
 export default ReactionRenderer;

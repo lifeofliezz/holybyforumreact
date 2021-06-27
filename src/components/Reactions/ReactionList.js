@@ -3,6 +3,7 @@ import TopicContextService from '../../context/TopicContext';
 import TopicRenderer from '../topics/TopicRenderer';
 import ReactionRenderer from './ReactionRenderer';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 
 //render a topic and a list of reactions
 const ReactionsList = (props) => {
@@ -43,27 +44,49 @@ const ReactionsList = (props) => {
 
   return(
     <div>
-      {
-        topics.map((topic) => (
-          <div>
-            <span>{topic.title}</span>
-            <span>{topic.username}</span>
-            <span>{topic.content}</span>
-          </div>
-        ))
-      }
-
-      {
-        reactions.map((reaction) => (
-          <ReactionRenderer 
-            key={reaction.id} 
-            username={reaction.username} 
-            userid={reaction.user_id} 
-            content={reaction.content} 
-            reactionid={reaction.id} 
-            onChange={onChange} />
-        ))
-      }
+      <Container>
+        <Row>
+          <Col>
+            <h4>Topic with reaction list</h4>
+          </Col>
+        </Row>
+        {
+          topics.map((topic) => (
+            <div>
+              <Row>
+                <Col>
+                  <span>{topic.title}</span>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <span>{topic.username}</span>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <span>{topic.content}</span>
+                </Col>
+              </Row>
+            </div>            
+          ))
+        }
+        <Row className='justify-content-md-center'>
+          <Col xs={12} sm={12}>
+            {
+              reactions.map((reaction) => (
+                <ReactionRenderer 
+                  key={reaction.id} 
+                  username={reaction.username} 
+                  userid={reaction.user_id} 
+                  content={reaction.content} 
+                  reactionid={reaction.id} 
+                  onChange={onChange} />
+              ))
+            }
+          </Col>
+        </Row>        
+      </Container>
     </div>
   );
 };

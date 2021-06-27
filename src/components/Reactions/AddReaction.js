@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TopicContextService from './../../context/TopicContext';
+import { Container, Row, Col, Button, Form, Alert } from 'react-bootstrap';
 
 //todo: rerender reactionlist after adding reaction
 
@@ -17,7 +18,7 @@ const AddReaction = (props) => {
     setReaction({...reaction,[name]:value})
   };
 
-  const saveReaction = () =>{
+  const saveReaction = () => {
     var data = {
     content: reaction.content,
     topic_id: props.topicId
@@ -42,30 +43,51 @@ const AddReaction = (props) => {
     setSubmitted(false);
   };
 
-  return (
+  return submitted ? (
     <div className='submit-form'>
-      {submitted ? (
-      <div>
-        <h5>Succesful submitted</h5>
-        <button className='btn btn-success' onClick={newReaction}>
-          Add
-        </button>
-      </div>
-      ) : (
-      <div className='form-group'>
-        <input
-          type='text'
-          className='form-control'
-          id='content'
-          required
-          value = {reaction.content}
-          onChange={handleInputChange}
-          name='content' />
-        <button onClick={saveReaction} className='btn btn-success'>
-          Voeg toe
-        </button>
-      </div>
-      )}
+      <Container>
+        <Row>
+          <Col>
+            <Alert variant='success'>
+              Reactie toegevoegd
+            </Alert>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button onClick={newReaction}>
+              Reactie toevoegen
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  ) : (
+    <div className='submit-form'>
+      <Container>
+        <Row>
+          <Col>
+            <Form>
+              <Form.Group>
+                <Form.Label>
+                  Reactie
+                </Form.Label>
+                <Form.Control 
+                  type='text'
+                  id='content'
+                  required
+                  defaultValue={reaction.content}
+                  onChange={handleInputChange}
+                  placeholder='Text'
+                  name='content' />
+              </Form.Group>              
+              <Button variant='primary' onClick={saveReaction}>
+                Voeg toe
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

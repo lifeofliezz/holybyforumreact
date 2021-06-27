@@ -1,28 +1,36 @@
-import React, { useContext } from 'react'
+import React from 'react';
 import ReactionsList from './ReactionList';
-import AddTopic from '../topics/AddTopic';
 import AddReaction from './AddReaction';
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 function Reactions(props) {
   const topicid = props.location.search.split('=')[1];
 
   return(
     <div>
-      <h1>Topic met reacties</h1>
-      <div>
-        <ReactionsList topicid={topicid}/>
-      </div>
-      <div>
-        <h3>Voeg een reactie toe</h3>
-        <AddReaction topicId={topicid}/>
-      </div>
-      <Link to='/'>
-      <Button>
-        <p>Terug</p>
-      </Button>
-      </Link>
+      <Container>
+        <Row className='justify-content-md-center'>
+          <Col>
+            <h1>Topic with Reaction</h1>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Col>
+            <ReactionsList topicid={topicid}/>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Col>
+            <h3>Voeg een reactie toe</h3>
+            <AddReaction topicId={topicid}/>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Button variant='primary' href='/'>
+            Terug
+          </Button>
+        </Row>
+      </Container>
     </div>
   );
 }

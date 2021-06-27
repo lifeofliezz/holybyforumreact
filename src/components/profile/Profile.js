@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
 import MyProfileInformation from './MyProfileInformation';
 import { MyContext } from '../../context/MyContext';
 import { useContext } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 function Profile(){
   const { rootState } = useContext(MyContext);
@@ -10,14 +9,25 @@ function Profile(){
 
   return (
     <div>
-      <span>profiel van {theUser.username}</span>
-      <MyProfileInformation/>
-
-      <Link to='/'>
-        <Button>
-          <p>Terug</p>
-        </Button>
-      </Link>
+      <Container fluid>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='3' style={{ textAlign: 'center' }}>            
+            <h2>profiel van {theUser.username}</h2>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='3'>            
+            <MyProfileInformation/>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='3'>
+            <Button variant='primary' href='/' style={{ width: '100%' }}>
+              Terug
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
