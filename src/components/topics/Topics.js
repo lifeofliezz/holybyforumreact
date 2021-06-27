@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
-import TopicList from './TopicsList'
-import AddTopicPopup from './AddTopicPopup';
+import React, { useContext, useState } from 'react';
+import TopicList from './TopicsList';
 import AddTopic from './AddTopic';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 function Topics() {
   const [newTopic, setNewTopic] = useState(false);
@@ -12,22 +12,30 @@ function Topics() {
 
   return(
     <div>
-      <h1>Topics</h1>
-
+      <Container fluid>
+        <Row>
+          <Col>          
+            <h1>Topics</h1>
+          </Col>
+        </Row>
+      </Container>
       {
         newTopic? (
           <AddTopic />
         ) : (null)
       }
-      <div>
-        <button onClick={toggleNewTopic}>
-          Nieuw topic
-        </button>
-      </div>
-
-      <div>
-        <TopicList/>
-      </div>
+      <Row>
+        <Col>
+          <Button onClick={toggleNewTopic}>
+            Nieuw topic
+          </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <TopicList/>
+        </Col>
+      </Row>
     </div>
   );
 }

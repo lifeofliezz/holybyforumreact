@@ -1,5 +1,5 @@
-import React, { createContext,Component } from 'react';
-import {authAxios, publicAxios} from './http-common';
+import React, { createContext, Component } from 'react';
+import { authAxios, publicAxios } from './http-common';
 export const MyContext = createContext();
 
 class MyContextProvider extends Component 

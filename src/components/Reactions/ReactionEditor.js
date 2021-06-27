@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TopicContext from './../../context/TopicContext';
+import { Container, Row, Col, Form, Button, FloatingLabel } from 'react-bootstrap';
 
 function ReactionEditor(props) {
   const [content, setContent] = useState(props.content);
@@ -16,14 +17,35 @@ function ReactionEditor(props) {
   }
 
   return (
-    <>
-      <textarea onChange={onChangeValue} >
-        {content}
-      </textarea>
-      <button onClick={onSave}>
-        save
-      </button>
-    </>
+    <div>
+      <Container>
+        <Row>
+          <Col>
+            <Form>
+              <Form.Group>
+                <Form.Control
+                  as="textarea"
+                  placeholder="reactie"
+                  defaultValue={content}
+                  style={{ height: '100px' }} 
+                  onChange={onChangeValue} />
+              </Form.Group>              
+              <Button onClick={onSave}>
+                Opslaan
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+    // <>
+    //   <textarea onChange={onChangeValue} >
+    //     {content}
+    //   </textarea>
+    //   <button onClick={onSave}>
+    //     save
+    //   </button>
+    // </>
   );
 }
 

@@ -1,9 +1,9 @@
-import React, { useContext,useState } from 'react'
-import { MyContext } from '../context/MyContext'
+import React, { useContext, useState } from 'react'
+import { MyContext } from './../context/MyContext'
 import { Container, Row, Col, Form, Button} from 'react-bootstrap';
 
 function Register() {
-  const {toggleNav,registerUser} = useContext(MyContext);
+  const { toggleNav, registerUser } = useContext(MyContext);
   const initialState = {
     userInfo:{
       username:'',

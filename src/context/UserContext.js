@@ -1,4 +1,4 @@
-import {authAxios} from './http-common';
+import { authAxios } from './http-common';
 
 // Get the topics per page(data)
 const getUser = () => {

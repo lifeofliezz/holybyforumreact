@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const textEllipsisStyle = {
   overflow: 'hidden',
@@ -8,16 +9,24 @@ const textEllipsisStyle = {
 
 const TopicRenderer = (props) => {
   return (
-  <div style={{borderRadius: 8, display:'flex', padding:8, textAlign:'left', backgroundColor:'lightgray', marginTop:8}} >
-    <Link to={{
-      pathname:'/topicreactions',
-      search:'?topicid=' + props.id
-      }}>
-      <span style={{...textEllipsisStyle, fontSize: 20}}>{props.title}</span>
-    </Link>
-    <span style={{...textEllipsisStyle, fontSize: 14}}>{props.username}</span>
-    <span style={{...textEllipsisStyle, fontSize: 12}}>{props.content}</span>
-  </div>
+    <div>
+      <Card style={{paddingBottom: 5}}>
+        <Card.Body>
+          <Card.Title>
+            {props.title}
+          </Card.Title>
+          <Card.Subtitle>
+            Auteur: {props.username}
+          </Card.Subtitle>
+          <Card.Text>
+            {props.content}
+          </Card.Text>
+          <Card.Link href={'/topicreactions?topicid=' + props.id}>
+            Bekijken
+          </Card.Link>
+        </Card.Body>
+      </Card>
+    </div>
   )
 }
 

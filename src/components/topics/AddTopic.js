@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TopicContextService from './../../context/TopicContext';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
 const AddTopic = () => {
   const initialTopicState = {
@@ -12,7 +13,7 @@ const AddTopic = () => {
 
   const handleInputChange = event => {
     const {name, value} = event.target;
-    setTopic({...topic,[name]:value})
+    setTopic({...topic, [name]:value})
   };
 
   const saveTopic = () => {
@@ -40,42 +41,63 @@ const AddTopic = () => {
     setSubmitted(false);
   };
 
-  return(
+  return submitted ? (
     <div className='submit-form'>
-      {
-        submitted ? (
-          <div>
-            <h4>Succesful submitted</h4>
-            <button className='btn btn-success' onClick={newTopic}>
-              Add
-            </button>
-          </div>
-        ) : (
-          <div className='form-group'>
-            <label htmlFor='title'>Titel</label>
-            <input
-              type='text'
-              className='form-control'
-              id='title'
-              required
-              value = {topic.title}
-              onChange={handleInputChange}
-              name='title' />
-            <label htmlFor='content'>Content</label>
-            <input
-              type='text'
-              className='form-control'
-              id='content'
-              required
-              value = {topic.content}
-              onChange={handleInputChange}
-              name='content' />
-            <button onClick={saveTopic} className='btn btn-success'>
-              Submit
-            </button>
-          </div>
-        )
-      }
+      <Container>
+        <Row>
+          <Col>
+            <Alert varient='success'>
+              Topic toegevoegd
+            </Alert>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button variant='primary' onClick={newTopic}>
+              Topic toevoegen
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  ) : (
+    <div className='submit-form'>
+      <Container>
+        <Row>
+          <Col>
+            <Form>
+              <Form.Group>
+                <Form.Label>Titel</Form.Label>
+                <Form.Control 
+                  type='text'
+                  placeholder='Topictitel'
+                  id='title'
+                  required
+                  defaultValue={topic.title}
+                  onChange={handleInputChange}
+                  name='title' 
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Inhoud</Form.Label>
+                <Form.Control 
+                  type='text'
+                  placeholder='Inhoud'
+                  id='content'
+                  required
+                  defaultValue={topic.content}
+                  onChange={handleInputChange}
+                  name='content' 
+                />
+              </Form.Group>
+              <Button variant='primary' type='submit'>
+                Toevoegen
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
