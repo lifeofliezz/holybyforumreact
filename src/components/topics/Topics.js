@@ -10,6 +10,8 @@ function Topics() {
     setNewTopic(!newTopic)
   }
 
+
+
   return(
     <div>
       <h1>Topics</h1>

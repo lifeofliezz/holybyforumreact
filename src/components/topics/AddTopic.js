@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import TopicContextService from './../../context/TopicContext';
 
+//todo: rerender topiclist after adding topic
+
 const AddTopic = () => {
   const initialTopicState = {
     title: '',

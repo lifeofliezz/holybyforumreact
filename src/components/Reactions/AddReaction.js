@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import TopicContextService from './../../context/TopicContext';
 
+//todo: rerender reactionlist after adding reaction
+
 const AddReaction = (props) => {
   const initialReactionState = {
     content: '',
