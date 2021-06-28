@@ -93,7 +93,7 @@ const AddTopic = () => {
                   name='content' 
                 />
               </Form.Group>
-              <Button variant='primary' type='submit'>
+              <Button variant='primary' onClick={saveTopic}>
                 Toevoegen
               </Button>
             </Form>

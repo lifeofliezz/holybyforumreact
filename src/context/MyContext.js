@@ -27,7 +27,7 @@ class MyContextProvider extends Component
 
   // On Click the Log out button
   logoutUser = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('loginToken');
     this.setState({
       ...this.state,
       isAuth:false

@@ -47,7 +47,7 @@ const ReactionsList = (props) => {
       <Container>
         <Row>
           <Col>
-            <h4>Topic with reaction list</h4>
+            <h4>Topic</h4>
           </Col>
         </Row>
         {
@@ -55,22 +55,28 @@ const ReactionsList = (props) => {
             <div>
               <Row>
                 <Col>
-                  <span>{topic.title}</span>
+                  <span>Titel: {topic.title}</span>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <span>{topic.username}</span>
+                  <span>Auteur: {topic.username}</span>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <span>{topic.content}</span>
+                  <span>tekst: {topic.content}</span>
                 </Col>
               </Row>
             </div>            
           ))
         }
+
+        <Row>
+          <Col>
+            <h4>Reacties</h4>
+          </Col>
+        </Row>
         <Row className='justify-content-md-center'>
           <Col xs={12} sm={12}>
             {

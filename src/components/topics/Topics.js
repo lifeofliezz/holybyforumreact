@@ -21,18 +21,19 @@ function Topics() {
           </Col>
         </Row>
       </Container>
-      {
-        newTopic? (
-          <AddTopic />
-        ) : (null)
-      }
-      <Row>
+
+      <Row >
         <Col>
-          <Button onClick={toggleNewTopic}>
+          <Button onClick={toggleNewTopic} class="btn btn-outline-primary float-left">
             Nieuw topic
           </Button>
         </Col>
       </Row>
+        {
+            newTopic? (
+                <AddTopic />
+            ) : (null)
+        }
       <Row>
         <Col>
           <TopicList/>

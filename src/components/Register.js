@@ -98,7 +98,8 @@ function Register() {
                   defaultValue={state.userInfo.password} 
                   onChange={onChangeValue} />
               </Form.Group>
-
+              {errorMsg}
+              {successMsg}
               <Button variant='primary' type='submit'>
                 Sign Up
               </Button>

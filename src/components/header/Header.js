@@ -8,9 +8,9 @@ import {
   Container, 
   Button
 } from 'react-bootstrap';
+//todo: logout + reload picks up last user. fix
 
-
-function Header(props) {
+function Header() {
   const {rootState, toggleNav, logoutUser} = useContext(MyContext);
   const {isAuth, theUser} = rootState;
 
@@ -19,7 +19,7 @@ function Header(props) {
     <div>
       <Navbar bg='light'>
         <Container> 
-          <Navbar.Brand href='#home'>
+          <Navbar.Brand href='/'>
             Holybe forum
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -44,7 +44,7 @@ function Header(props) {
     <div>
       <Navbar bg='light'>
         <Container>                    
-          <Navbar.Brand href='#home'>Holybe forum</Navbar.Brand>
+          <Navbar.Brand href='/'>Holybe forum</Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
